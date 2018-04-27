@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {MenuItem,ButtonToolbar,DropdownButton} from 'react-bootstrap';
+import {MenuItem,ButtonToolbar,DropdownButton,Label,input} from 'react-bootstrap';
 import Rate from './Rate.jsx'
 
 
@@ -12,9 +12,9 @@ export default class Specialties extends Component{
 		super(props)
 		this.state={
 			specialty:''
+			
 		}
 		this.onSelect=this.onSelect.bind(this)
-		
 	}
 
 	onSelect(e){
@@ -22,22 +22,15 @@ export default class Specialties extends Component{
 			specialty:e
 		})
 	}
-
 	render(){
-			
 		return (
 			<div>
-			
 				<div id="home" className=" container spbutton">
-			
-				
 					<div className='row'>
 						<div className='col-sm-4'>
 							<ButtonToolbar >
-
-								<DropdownButton className="btn btn-info  homebtn"  onSelect={this.onSelect}title ='choose specialty'
-									noCaret
-									id='dropdown-no-caret'>
+								<DropdownButton className="btn btn-info  homebtn"  onSelect={this.onSelect} title ='Select Specialty'
+									noCaret id='dropdown-no-caret'>
 										<MenuItem eventKey='otolaryngologists(ear,nose,throat)'>otolaryngologists(ear,nose,throat)</MenuItem>
 										<MenuItem eventKey='cardiology(heart)'>cardiology(heart)</MenuItem>
 										<MenuItem eventKey='neurologists(brain and nervus system)'>neurologists(brain and nervus system)</MenuItem>
@@ -47,19 +40,17 @@ export default class Specialties extends Component{
 										<MenuItem eventKey='dermatology(skin)'>dermatology(skin) </MenuItem>
 										<MenuItem eventKey='Pediatric(children)'>Pediatric(children) </MenuItem>
 										<MenuItem eventKey='allergologist'>allergologist </MenuItem>
-										
-
-
 								</DropdownButton>
 							</ButtonToolbar>
+							<div className='homebtn'>
+  								<h3>Specialty:{this.state.specialty}</h3>
+  							</div>
 						</div>
-					<div className='col-sm-8'>
-						<Rate specialty={this.state.specialty}/>
-					</div>
-			
+						<div className='col-sm-8'>
+							<Rate specialty={this.state.specialty}/>
+						</div>
 					</div>
 				</div>
-			
 			</div>
 		)
 	}

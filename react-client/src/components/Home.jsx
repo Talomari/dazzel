@@ -7,13 +7,10 @@ import { SocialIcon } from 'react-social-icons';
 * This is  an react-bootstrap component Design .
 */
 export default class Home extends Component{
-	
 	render(){
-			
 		return (
 			<div>
 				<Navbar className='divNav'> 
-
 				<Navbar.Header>
     				<Navbar.Brand >
      					 <a  className='header'href="#home"><strong>Doctory</strong></a>
@@ -39,32 +36,24 @@ export default class Home extends Component{
 					  </Carousel.Item>
 					  <Carousel.Item className="img">
 					    <img className="img" alt="900x500" src="../photos/dr-toddler-ear-exam-500px.jpg" />
-					   
-					  </Carousel.Item>
+					   	</Carousel.Item>
 					</Carousel>
 				</div>
 					<div>
 				<Specialties/>
 				</div>
-	
 				<footer className="navbar-fixed-bottom footer">
 					<div className="container">
 						<div className="row">
 							 <h4> Contact Us :</h4>
-                    
                     <SocialIcon url='http://twitter.com'  />
                     <SocialIcon url='http://facebook.com' />
                     <SocialIcon url='http://slack.com'/> 
                     <SocialIcon url='http://github.com'  />
-
-
-                
-						</div>
+ 				</div>
 					</div>
 				</footer>
-
 			</div>
-
 		)
 	}
 }

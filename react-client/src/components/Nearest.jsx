@@ -1,4 +1,4 @@
-  import React from 'react';
+import React from 'react';
 import GoogleMapReact from 'google-map-react';
 import { Marker } from 'react-google-maps';
 import $ from 'jquery';
@@ -14,7 +14,6 @@ class Map extends React.Component {
       this.state={
         specialties:[]
       }
-
     this.showNearest=this.showNearest.bind(this);
   }
 
@@ -22,9 +21,7 @@ class Map extends React.Component {
 * Ajax request fetch the nearest three Doctors from  the data base  
 */
  showNearest(){
-   console.log(this.props.lat,this.props.lng)
-    
-      var that=this
+    var that=this
       $.ajax({
         url:'/docNearst/'+that.props.specialty,
         type:'GET',
@@ -37,21 +34,17 @@ class Map extends React.Component {
                         Math.cos(that.props.lat * (Math.PI/180)) * Math.cos(data[i].address.lat * (Math.PI/180)) *
                         Math.sin(dLng/2) * Math.sin(dLng/2);
             var c = 2 * Math.atan2(Math.sqrt(math), Math.sqrt(1-math)); 
-
             var distance= 6372.797 * c;
             data[i].des = distance
             arr.push(data[i])  
           }
           arr.sort(function(a, b){return a.des - b.des});
           arr.splice(3,arr.length-1)
-
-
           that.setState({
             specialties:arr
           }) 
-        }
-      })
-    
+          }
+        })
   }
 /*
 * function gives the lat and lng when the user click on his location 
@@ -60,20 +53,16 @@ class Map extends React.Component {
     this.setState({
       markerPosition: {lat:e.lat,lng:e.lng},
       isMarkerShown:true
-
     })
   }
   /*
   * rendering the nearest three doctors after determing the user loction 
   */
   render() {
-    
     return (
       <div>
-
-        <button  onClick ={this.showNearest} type="button" className='btn btn-info btn-transparent homebtn'  >Nearest</button>
+        <button  onClick ={this.showNearest} type="button" className='btn btn-info btn-transparent homebtn'>Select Nearest Doctor</button>
           <br/>
-          
           <br/>
           <br/>
         {this.state.specialties.map(function(spe,index){
@@ -85,7 +74,6 @@ class Map extends React.Component {
                     <h2 className="DocName">Dr.{spe.name}</h2>
                     <h3 className="cardText ">distance: {spe.des} km</h3>
                     <h3 className="cardText">Tel: {spe.tel}</h3>
-
                   </div>
                 </div>
             </div>
